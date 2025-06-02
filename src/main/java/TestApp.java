@@ -13,4 +13,8 @@ public class TestApp {
     private static void doWork() {
         System.out.println("执行工作...");
     }
+
+    public static void premain(String[] args) {
+
+    }
 }

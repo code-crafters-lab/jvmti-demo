@@ -45,3 +45,6 @@ bin/
 .DS_Store
 *.h
 .idea
+*.dylib
+*.so
+*.dll
