@@ -13,7 +13,7 @@ else ifeq ($(OS), Linux)  # Linux
     AGENT_LIB_NAME := libagent.so
     DATA_GUARD_LIB_NAME := libdata-guard.so
 else ifeq ($(findstring MINGW,$(OS)), MINGW)  # Windows (MinGW)
-#	JAVA_LIBRARY_PATH=
+	JAVA_LIBRARY_PATH=D:\project\open-source\jvmti-tools\install\bin
     AGENT_LIB_NAME := agent.dll
     DATA_GUARD_LIB_NAME := data-guard.dll
 else
@@ -21,7 +21,7 @@ else
 endif
 
 # 构建完整的代理库路径
-AGENT_LIB_PATH := $(JAVA_LIBRARY_PATH)/$(AGENT_LIB_NAME)
+AGENT_LIB_PATH := "$(JAVA_LIBRARY_PATH)/$(AGENT_LIB_NAME)"
 
 test-app:
 	@java -Dfile.encoding=UTF-8 \

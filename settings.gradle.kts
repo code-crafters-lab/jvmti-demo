@@ -1,4 +1,4 @@
-rootProject.name = "jvmti-test"
+rootProject.name = "jvmti-demo"
 
 pluginManagement {
     repositories {

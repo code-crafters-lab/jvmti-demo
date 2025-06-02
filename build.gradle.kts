@@ -13,14 +13,18 @@ version = "1.0-SNAPSHOT"
 dependencies {
     testImplementation("com.grapecitysoft.documents:gcexcel:8.0.6")
 }
-val javaLibraryPath = "/Users/wuyujie/CLionProjects/jvmti-tools/install/lib"
-val agentPath = "${javaLibraryPath}/libagent.dylib"
+var javaLibraryPath = "/Users/wuyujie/CLionProjects/jvmti-tools/install/lib"
+var agentPath = "${javaLibraryPath}/libagent.dylib"
+if (System.getProperty("os.name").contains("Windows")) {
+    javaLibraryPath = "D:\\project\\open-source\\jvmti-tools\\install\\bin"
+    agentPath = "${javaLibraryPath}\\agent.dll"
+}
 
 application {
     mainClass.set("TestApp")
     applicationDefaultJvmArgs = listOf(
         "-Dfile.encoding=UTF-8",
-        "-verbose:jni",
+//        "-verbose:jni",
         "-agentlib:agent"
 //        "-Djava.library.path=${javaLibraryPath}",
 //        "-agentpath:${agentPath}"
