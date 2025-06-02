@@ -4,6 +4,7 @@ public class TestApp {
         try {
             byte[] encrypt = DataGuard.encrypt("HELLO WORLD".getBytes());
             System.out.println("加密结果：" + new String(encrypt));
+            doWork();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
