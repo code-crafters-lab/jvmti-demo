@@ -21,11 +21,11 @@ else
 endif
 
 # 构建完整的代理库路径
-AGENT_LIB_PATH := "$(JAVA_LIBRARY_PATH)/$(AGENT_LIB_NAME)"
+AGENT_LIB_PATH := $(JAVA_LIBRARY_PATH)/$(AGENT_LIB_NAME)
 
 test-app:
 	@java -Dfile.encoding=UTF-8 \
-		-Djava.library.path="$(JAVA_LIBRARY_PATH)" \
+		-Djava.library.path=$(JAVA_LIBRARY_PATH) \
 		-agentpath:$(AGENT_LIB_PATH) \
 		-cp $(CLASS_PATH) TestApp
 javah:

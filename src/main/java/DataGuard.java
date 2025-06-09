@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+
 public final class DataGuard {
 
     static {
@@ -28,4 +30,5 @@ public final class DataGuard {
     public native static byte[] decrypt(byte[] cipher) throws Exception;
 
 
+    public native static String transform(String version, String buildNo, LocalDateTime time);
 }

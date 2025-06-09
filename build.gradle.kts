@@ -9,9 +9,12 @@ plugins {
 group = "org.codecrafterslab.unity"
 version = "1.0-SNAPSHOT"
 
-
 dependencies {
-    testImplementation("com.grapecitysoft.documents:gcexcel:8.0.6")
+    implementation("com.grapecitysoft.documents:gcexcel:8.0.6")
+    implementation("net.bytebuddy:byte-buddy:1.17.5")
+    implementation("net.bytebuddy:byte-buddy-agent:1.17.5")
+    implementation(files("/Users/wuyujie/Library/Java/JavaVirtualMachines/corretto-1.8.0_452/Contents/Home/lib/tools.jar"))
+    implementation(fileTree(mapOf("dir" to "/Applications/FineReport/webapps/webroot/WEB-INF/lib", "include" to listOf("*.jar"))))
 }
 var javaLibraryPath = "/Users/wuyujie/CLionProjects/jvmti-tools/install/lib"
 var agentPath = "${javaLibraryPath}/libagent.dylib"
