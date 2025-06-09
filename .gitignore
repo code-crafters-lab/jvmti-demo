@@ -50,3 +50,4 @@ logs
 *.dylib
 *.so
 *.dll
+.fastRequest
