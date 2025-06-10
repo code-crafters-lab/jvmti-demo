@@ -44,6 +44,7 @@ bin/
 ### Mac OS ###
 .DS_Store
 classes
+classes_encrypted
 logs
 *.h
 .idea
