@@ -13,11 +13,8 @@ public class TestApp {
     private static void doWork() {
         System.out.println("执行工作...");
         new Thread(()-> {
-            System.out.println("创建新的现场执行工作...");
+            System.out.println("创建新的线程执行工作...");
         }).start();
     }
 
-    public static void premain(String[] args) {
-
-    }
 }
