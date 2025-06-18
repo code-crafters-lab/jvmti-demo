@@ -29,6 +29,7 @@ public final class DataGuard {
      */
     public native static byte[] decrypt(byte[] cipher) throws Exception;
 
+    public native byte[] decrypt2(byte[] var1);
 
     public native static String transform(String version, String buildNo, LocalDateTime time);
 }

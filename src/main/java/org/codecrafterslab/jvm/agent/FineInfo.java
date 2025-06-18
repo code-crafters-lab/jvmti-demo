@@ -1,10 +1,8 @@
 package org.codecrafterslab.jvm.agent;
 
-import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Data
 public final class FineInfo {
 
     /**
@@ -21,7 +19,6 @@ public final class FineInfo {
      * The build number of the FineReport.
      */
     private String buildNo;
-
 
 
 }

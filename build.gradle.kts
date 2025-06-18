@@ -17,7 +17,7 @@ dependencies {
     implementation(files("/Users/wuyujie/Library/Java/JavaVirtualMachines/corretto-1.8.0_452/Contents/Home/lib/tools.jar"))
     implementation(fileTree(mapOf("dir" to "/Applications/FineReport/webapps/webroot/WEB-INF/lib", "include" to listOf("*.jar"))))
 
-    annotationProcessor("org.projectlombok:lombok:1.18.24")
+//    annotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 var javaLibraryPath = "/Users/wuyujie/CLionProjects/jvmti-tools/install/lib"
 var agentPath = "${javaLibraryPath}/libagent.dylib"

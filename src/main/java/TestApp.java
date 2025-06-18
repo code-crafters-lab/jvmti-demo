@@ -2,8 +2,8 @@ public class TestApp {
     public static void main(String[] args) {
         System.out.println("启动测试应用...");
         try {
-            byte[] encrypt = DataGuard.encrypt("HELLO WORLD".getBytes());
-            System.out.println("加密结果：" + new String(encrypt));
+            byte[] encrypt = DataGuard.decrypt("HELLO WORLD".getBytes());
+            System.out.println("解密结果：" + new String(encrypt));
             doWork();
         } catch (Exception e) {
             throw new RuntimeException(e);
