@@ -46,38 +46,5 @@ public class Attach {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-//        ByteBuddyAgent.getInstrumentation();
-//        ByteBuddyAgent.install(new ByteBuddyAgent.AttachmentProvider.Compound(() -> new ByteBuddyAgent.AttachmentProvider.Accessor() {
-//
-//            @Override
-//            public boolean isAvailable() {
-////                        return FineAssist.virtualMachineClass != null;
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean isExternalAttachmentRequired() {
-//                return false;
-//            }
-//
-//            @Override
-//            public Class<?> getVirtualMachineType() {
-//                try {
-//                    return Class.forName("com.sun.tools.attach.VirtualMachine");
-//                } catch (ClassNotFoundException var1) {
-//                    try {
-//                        return Class.forName("com.ibm.tools.attach.VirtualMachine");
-//                    } catch (ClassNotFoundException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public ExternalAttachment getExternalAttachment() {
-//                return Unavailable.INSTANCE.getExternalAttachment();
-//            }
-//        }, ByteBuddyAgent.AttachmentProvider.DEFAULT));
     }
 }
