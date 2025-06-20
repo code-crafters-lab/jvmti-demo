@@ -1,9 +1,11 @@
 package org.codecrafterslab;
 
+import lombok.extern.slf4j.Slf4j;
 import org.codecrafterslab.data.DataGuard;
 import org.codecrafterslab.data.impl.DefaultDataGuard;
 import org.codecrafterslab.data.impl.NativeDataGuard;
 
+@Slf4j
 public enum DataGuardContext {
     DEFAULT {
         @Override
@@ -18,12 +20,20 @@ public enum DataGuardContext {
         }
     };
 
-    private static String type = DEFAULT.name();
+    private static final String type;
+    private static DataGuard dataGuard;
 
     protected abstract DataGuard create();
 
-    public static DataGuardContext currentDataGuard() {
-        return DEFAULT;
+    public static DataGuard currentDataGuard() {
+        if (dataGuard == null) {
+            if (type.equals("Native")) {
+                dataGuard = Native.create();
+            } else {
+                dataGuard = DEFAULT.create();
+            }
+        }
+        return dataGuard;
     }
 
     static {
@@ -33,7 +43,9 @@ public enum DataGuardContext {
                 System.loadLibrary("data-guard");
             } catch (UnsatisfiedLinkError e) {
                 // 可以考虑在这里添加备选方案或错误处理逻辑
-                throw new ExceptionInInitializerError("无法加载数据保护模块，程序无法继续");
+                if (log.isWarnEnabled()) {
+                    log.warn("无法加载本地数据保护模块，程序继续使用默认数据保护模块");
+                }
             }
         }
     }
