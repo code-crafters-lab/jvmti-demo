@@ -6,8 +6,8 @@ plugins {
     application
 }
 
-group = "org.codecrafterslab.unity"
-version = "1.0-SNAPSHOT"
+group = "org.codecrafterslab"
+version = "1.0.0-SNAPSHOT"
 
 dependencies {
     implementation("org.apache.httpcomponents:httpclient:4.5.14")
@@ -15,7 +15,14 @@ dependencies {
     implementation("net.bytebuddy:byte-buddy:1.17.5")
     implementation("net.bytebuddy:byte-buddy-agent:1.17.5")
     implementation(files("/Users/wuyujie/Library/Java/JavaVirtualMachines/corretto-1.8.0_452/Contents/Home/lib/tools.jar"))
-    implementation(fileTree(mapOf("dir" to "/Applications/FineReport/webapps/webroot/WEB-INF/lib", "include" to listOf("*.jar"))))
+    implementation(
+        fileTree(
+            mapOf(
+                "dir" to "/Applications/FineReport/webapps/webroot/WEB-INF/lib",
+                "include" to listOf("*.jar")
+            )
+        )
+    )
 
 //    annotationProcessor("org.projectlombok:lombok:1.18.24")
 }
@@ -55,4 +62,8 @@ tasks {
 //            attributes["Can-Retransform-Classes"] = "true"
 //        }
     }
+}
+
+subprojects.forEach {
+//    it.projectDir = File("${rootDir}/$it.name")
 }

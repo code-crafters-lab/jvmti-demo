@@ -4,25 +4,6 @@ public class Attach {
     public static void main(String[] args) {
         test();
 //        new AgentBuilder.Default().type()
-
-        // 1. 安装ByteBuddy代理
-//        Instrumentation instrumentation = ByteBuddyAgent.install();
-//        instrumentation.retransformClasses(MyClass.class);
-        // 2. 定义字节码转换规则
-//        ByteBuddy byteBuddy = new ByteBuddy();
-//        License license = FRCoreContext.getLicense();
-//        new ByteBuddy()
-//                .type(ElementMatchers.is(BusinessService.class))
-//                .method(ElementMatchers.named("processData"))
-//                .transform((builder, typeDescription, classLoader, module) ->
-//                        builder.visit(Advice.to(PerformanceMonitor.class).on(ElementMatchers.any()))
-//                )
-//                .make()
-//                .load(
-//                        BusinessService.class.getClassLoader(),
-//                        ClassReloadingStrategy.fromInstalledAgent()
-//                );
-
     }
 
     private static void test() {
@@ -37,7 +18,7 @@ public class Attach {
             // 加载 java agent
 //            vm.loadAgent(agentPath,null);
             // 加载本地代理服务
-            vm.loadAgentPath(agentPath,null);
+            vm.loadAgentPath(agentPath, null);
 //            vm.loadAgentLibrary("agent", null);
 
             // 断开连接
