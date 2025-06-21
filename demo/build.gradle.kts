@@ -8,9 +8,16 @@ group = "org.codecrafterslab"
 repositories {
     mavenCentral()
 }
+val obfuscated = true
 
 dependencies {
-    implementation(project(":data-guard"))
+    if (obfuscated) {
+        val project1 = findProject(":data-guard")
+        val file = project1?.layout?.buildDirectory?.file("libs/${project1.name}-obfuscated.jar")
+        implementation(files(file!!))
+    } else {
+        implementation(project(":data-guard"))
+    }
     runtimeOnly(project(":crack-agent"))
     implementation("org.slf4j:slf4j-api:2.0.17")
     implementation("ch.qos.logback:logback-classic:1.5.18")
@@ -30,12 +37,7 @@ tasks.test {
     }
 }
 
-var javaLibraryPath = "/Users/wuyujie/CLionProjects/jvmti-tools/install/lib"
-var agentPath = "${javaLibraryPath}/libagent.dylib"
-if (System.getProperty("os.name").contains("Windows")) {
-    javaLibraryPath = "D:\\project\\open-source\\jvmti-tools\\install\\bin"
-    agentPath = "${javaLibraryPath}\\agent.dll"
-}
+var javaLibraryPath = ""
 
 enum class AgentType { JAVA, NATIVE }
 
@@ -43,7 +45,7 @@ var agentType = AgentType.JAVA
 /* java agent */
 val agentJar = project(":crack-agent").tasks.jar.get().outputs.files.singleFile
 /* native agent */
-val agentpath = "${javaLibraryPath}/agent.dll"
+val agentPath = "${javaLibraryPath}/agent.dll"
 
 application {
     mainClass.set("org.codecrafterslab.App")
@@ -53,12 +55,14 @@ application {
         args.add("-javaagent:${agentJar.absolutePath}")
     }
 
-    if (agentpath.isNotEmpty() && agentType == AgentType.NATIVE) {
+    if (agentPath.isNotEmpty() && agentType == AgentType.NATIVE) {
         args.add("-agentpath:${agentPath}")
     }
 
-    applicationDefaultJvmArgs = args
+    if (javaLibraryPath.isNotEmpty()) {
+        args.add("-Djava.library.path=${javaLibraryPath}")
+    }
 
-    println(args)
+    applicationDefaultJvmArgs = args
 }
 

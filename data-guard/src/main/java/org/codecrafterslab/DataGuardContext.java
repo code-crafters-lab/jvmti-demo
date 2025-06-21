@@ -13,7 +13,7 @@ public enum DataGuardContext {
             return new DefaultDataGuard();
         }
     },
-    Native {
+    NATIVE {
         @Override
         protected DataGuard create() {
             return new NativeDataGuard();
@@ -28,7 +28,7 @@ public enum DataGuardContext {
     public static DataGuard currentDataGuard() {
         if (dataGuard == null) {
             if (type.equals("Native")) {
-                dataGuard = Native.create();
+                dataGuard = NATIVE.create();
             } else {
                 dataGuard = DEFAULT.create();
             }
@@ -38,7 +38,7 @@ public enum DataGuardContext {
 
     static {
         type = System.getProperty("data.guard.type", DEFAULT.name());
-        if (Native.name().equalsIgnoreCase(type)) {
+        if (NATIVE.name().equalsIgnoreCase(type)) {
             try {
                 System.loadLibrary("data-guard");
             } catch (UnsatisfiedLinkError e) {

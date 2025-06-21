@@ -40,17 +40,16 @@ tasks.register<proguard.gradle.ProGuardTask>("proguardJar") {
     description = "Obfuscate JAR using ProGuard"
 
     dependsOn(tasks.build)
-        // 输入：原始JAR文件
+    // 输入：原始JAR文件
     injars(tasks.jar.get().outputs.files.singleFile)
 
     // 输出：混淆后的JAR文件
     outjars(layout.buildDirectory.file("libs/${project.name}-obfuscated.jar"))
 
+    // 指定 JDK 模块路径
+    libraryjars("/Users/wuyujie/Library/Java/JavaVirtualMachines/ms-21.0.7/Contents/Home/jmods/java.base.jmod")
     // 库依赖（用于解析类引用）
-    libraryjars(
-//        "${javaToolchains.defaultToolchain.get().javaHome.asFile}/lib/rt.jar",
-        configurations.runtimeClasspath.get().asFileTree.files
-    )
+    libraryjars(configurations.runtimeClasspath.get().asFileTree.files)
 
     // 应用ProGuard配置
     configuration("proguard-rules.pro")
@@ -64,6 +63,8 @@ tasks.register<proguard.gradle.ProGuardTask>("proguardJar") {
     // 可选：调试信息
     verbose()
 
-    // 可选：不跳过非公共库类
-//    dontskipnonpubliclibraryclasses()
+
+//    keep("-keep class org.codecrafterslab.DataGuardContext { *; }")
+    // 添加 Lombok 注解的保留规则, 忽略找不到的 Lombok 注解
+    dontwarn("lombok.Generated")
 }

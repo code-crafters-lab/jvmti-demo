@@ -1,7 +1,12 @@
-# 保留主类和main方法
--keep public class com.example.MyApp {
-    public static void main(java.lang.String[]);
+# 保留枚举
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
 }
+
+# 保留 SLF4J
+-keep interface org.slf4j.** { *; }
+-keep class org.slf4j.impl.** { *; }
 
 # 保留序列化相关类
 -keep class * implements java.io.Serializable { *; }
@@ -11,6 +16,3 @@
 
 # 保留反射使用的类
 -keep class com.example.reflect.** { *; }
-
-# 禁用优化（可选，便于调试）
-
