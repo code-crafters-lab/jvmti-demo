@@ -15,7 +15,8 @@ public class Agent {
 
     private static void processAgent(String agentArgs, Instrumentation inst, boolean attach) {
         /* 解析参数 */
-        String transformerClassName= "org.codecrafterslab.data.impl.DefaultDataGuard";
+        String transformerClassName = System.getProperty("transformer.class.name",
+                "org.codecrafterslab.data.impl.DefaultDataGuard");
 
         DataGuardClassFileTransformer classFileTransformer = new DataGuardClassFileTransformer();
 

@@ -9,7 +9,8 @@ import java.security.ProtectionDomain;
 @Slf4j
 public class DataGuardClassFileTransformer implements ClassFileTransformer {
 
-    public static String DEFAULT_DATA_GUARD_CLASS = "org.codecrafterslab.data.impl.DefaultDataGuard";
+    public static String DEFAULT_DATA_GUARD_CLASS = System.getProperty("transformer.class.name",
+            "org.codecrafterslab.data.impl.DefaultDataGuard");
 
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,

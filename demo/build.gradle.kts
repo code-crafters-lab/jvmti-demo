@@ -63,6 +63,8 @@ application {
         args.add("-Djava.library.path=${javaLibraryPath}")
     }
 
+    args.add("-Dtransformer.class.name=org.codecrafterslab.data.a.a")
+
     applicationDefaultJvmArgs = args
 }
 
