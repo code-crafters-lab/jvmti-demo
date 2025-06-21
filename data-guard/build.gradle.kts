@@ -18,7 +18,6 @@ repositories {
 
 dependencies {
     implementation("org.slf4j:slf4j-api:2.0.17")
-//    runtimeOnly("com.guardsquare:proguard-gradle:7.7.0")
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
@@ -58,13 +57,11 @@ tasks.register<proguard.gradle.ProGuardTask>("proguardJar") {
     printmapping(layout.buildDirectory.file("outputs/mapping/proguard/mapping.txt"))
 
     // 可选：优化级别
-    optimizationpasses(5)
+    optimizationpasses(9)
 
     // 可选：调试信息
     verbose()
 
-
-//    keep("-keep class org.codecrafterslab.DataGuardContext { *; }")
     // 添加 Lombok 注解的保留规则, 忽略找不到的 Lombok 注解
     dontwarn("lombok.Generated")
 }

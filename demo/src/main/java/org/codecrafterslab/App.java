@@ -3,7 +3,6 @@ package org.codecrafterslab;
 import com.beust.jcommander.JCommander;
 import lombok.extern.slf4j.Slf4j;
 import org.codecrafterslab.data.DataGuard;
-import org.codecrafterslab.data.impl.NativeDataGuard;
 
 import java.nio.charset.StandardCharsets;
 
@@ -42,7 +41,7 @@ public class App {
         // 2. 获取具体实现
         DataGuard dataGuard = DataGuardContext.currentDataGuard();
         // 3. 确保其实现为 NativeDataGuard
-        nativeEncrypted = dataGuard instanceof NativeDataGuard;
+        nativeEncrypted = dataGuard.isNative();
         // 4. 加密或解密
         if (options.getContent() == null) return;
         byte[] src = options.getContent().getBytes(StandardCharsets.UTF_8);

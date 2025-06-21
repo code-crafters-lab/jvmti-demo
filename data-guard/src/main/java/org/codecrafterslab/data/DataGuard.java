@@ -17,4 +17,13 @@ public interface DataGuard {
      * @return 明文字节码
      */
     byte[] decrypt(byte[] cipherText);
+
+    /**
+     * 是否为本地加密算法
+     *
+     * @return true:本地加密算法，false:非本地加密算法
+     */
+    default boolean isNative() {
+        return false;
+    }
 }

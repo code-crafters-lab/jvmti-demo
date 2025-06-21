@@ -8,6 +8,11 @@
 -keep interface org.slf4j.** { *; }
 -keep class org.slf4j.impl.** { *; }
 
+# 保留 DataGuard 接口定义
+-keep interface org.codecrafterslab.data.DataGuard {
+    public *;
+}
+
 # 保留序列化相关类
 -keep class * implements java.io.Serializable { *; }
 
