@@ -8,10 +8,10 @@
 
     <!-- 全局级别：设置为 INFO，忽略 DEBUG 和 TRACE -->
     <root level="INFO">
-        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="CONSOLE"/>
     </root>
 
     <!-- 单独配置特定包的级别 -->
-    <logger name="org.codecrafterslab" level="TRACE" />  <!-- 调试特定包 -->
-    <logger name="org.springframework" level="WARN" />  <!-- 减少框架日志 -->
+    <logger name="org.codecrafterslab" level="DEBUG"/>  <!-- 调试特定包 -->
+    <logger name="org.springframework" level="WARN"/>
 </configuration>
