@@ -34,11 +34,12 @@ tasks.test {
     }
 }
 
-tasks.register<proguard.gradle.ProGuardTask>("proguardJar") {
+val proguardJar = tasks.register<proguard.gradle.ProGuardTask>("proguardJar") {
     group = "build"
     description = "Obfuscate JAR using ProGuard"
 
-    dependsOn(tasks.build)
+    // 依赖原始JAR任务
+    dependsOn(tasks.jar)
     // 输入：原始JAR文件
     injars(tasks.jar.get().outputs.files.singleFile)
 
@@ -64,4 +65,8 @@ tasks.register<proguard.gradle.ProGuardTask>("proguardJar") {
 
     // 添加 Lombok 注解的保留规则, 忽略找不到的 Lombok 注解
     dontwarn("lombok.Generated")
+}
+
+tasks.assemble {
+    finalizedBy(proguardJar)
 }

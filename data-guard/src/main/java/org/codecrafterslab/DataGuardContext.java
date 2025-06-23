@@ -27,7 +27,7 @@ public enum DataGuardContext {
 
     public static DataGuard currentDataGuard() {
         if (dataGuard == null) {
-            if (type.equals("Native")) {
+            if (type.equalsIgnoreCase("Native")) {
                 dataGuard = NATIVE.create();
             } else {
                 dataGuard = DEFAULT.create();

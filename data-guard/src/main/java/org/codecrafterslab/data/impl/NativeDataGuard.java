@@ -9,7 +9,5 @@ public class NativeDataGuard implements DataGuard {
     public native byte[] decrypt(byte[] cipherText);
 
     @Override
-    public boolean isNative() {
-        return true;
-    }
+    public native boolean isNative();
 }
